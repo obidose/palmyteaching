@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mark teaching attendance · Palmy ED</title>
+  <link rel="stylesheet" href="attend.css">
+</head>
+<body>
+  <main class="attend">
+    <header class="attend__header">
+      <div class="attend__brand-bar" aria-hidden="true"></div>
+      <p class="attend__site-label">Palmy ED Teaching</p>
+      <h1 class="attend__title">Mark attendance</h1>
+    </header>
+
+    <p class="attend__intro">Enter the 4-character code shown in the teaching room.</p>
+
+    <form id="attend-form" class="attend__form" autocomplete="off">
+      <label class="attend__label" for="attend-code">Session code</label>
+      <input
+        id="attend-code"
+        class="attend__input"
+        type="text"
+        inputmode="text"
+        autocapitalize="characters"
+        autocorrect="off"
+        spellcheck="false"
+        maxlength="4"
+        placeholder="e.g. K7M2"
+        required
+      />
+      <button type="submit" class="attend__submit">Continue to form</button>
+    </form>
+
+    <div id="attend-error" class="attend__error-panel" hidden>
+      <p id="attend-error-detail" class="attend__error"></p>
+    </div>
+  </main>
+
+  <script src="form-config.js"></script>
+  <script src="attend.js"></script>
+</body>
+</html>

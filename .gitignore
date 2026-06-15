@@ -1,0 +1,4 @@
+# Static site files
+.DS_Store
+*.swp
+*~

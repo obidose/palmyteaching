@@ -1,0 +1,140 @@
+:root {
+  --palmy-red: #c62828;
+  --palmy-teal: #00897b;
+  --text: #1a1a1a;
+  --text-muted: #5c5c5c;
+  --surface: #ffffff;
+  --border: #e0e0e0;
+  --error-bg: #fff8e1;
+  --error-border: #ffcc80;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: linear-gradient(160deg, #fafafa 0%, #f0f4f4 50%, #fafafa 100%);
+}
+
+.attend {
+  max-width: 22rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+  text-align: center;
+}
+
+.attend__header {
+  margin-bottom: 1.75rem;
+}
+
+.attend__brand-bar {
+  height: 4px;
+  width: 3rem;
+  margin: 0 auto 1rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--palmy-red), var(--palmy-teal));
+}
+
+.attend__site-label {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.attend__title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.attend__intro {
+  margin: 0 0 1.5rem;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+
+.attend__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.attend__label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text-muted);
+}
+
+.attend__input {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.85rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.attend__input:focus {
+  outline: none;
+  border-color: var(--palmy-teal);
+  box-shadow: 0 0 0 3px rgba(0, 137, 123, 0.2);
+}
+
+.attend__submit {
+  margin-top: 0.25rem;
+  padding: 0.85rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--palmy-red);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.attend__submit:hover {
+  background: #b71c1c;
+}
+
+.attend__submit:active {
+  transform: scale(0.98);
+}
+
+.attend__error-panel {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+}
+
+.attend__error {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text);
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teaching attendance · Palmy ED</title>
+  <link rel="stylesheet" href="slide.css">
+</head>
+<body>
+  <div class="slide">
+    <div class="slide__accent" aria-hidden="true"></div>
+
+    <div id="teaching-qr-error" class="slide__error" hidden>
+      <div class="slide__card slide__card--error">
+        <p class="slide__error-label">Cannot show QR code</p>
+        <p id="teaching-qr-error-detail" class="slide__error-detail"></p>
+      </div>
+    </div>
+
+    <div id="teaching-qr-content" class="slide__content" hidden>
+      <article class="slide__card">
+        <header class="slide__header">
+          <h1 id="teaching-qr-title" class="slide__title"></h1>
+          <p id="teaching-qr-meta" class="slide__meta">
+            <span id="teaching-qr-date-wrap" hidden><span id="teaching-qr-date"></span></span><span id="teaching-qr-meta-sep" hidden> · </span><span id="teaching-qr-speaker-wrap" hidden><span id="teaching-qr-speaker"></span></span>
+          </p>
+        </header>
+
+        <div id="teaching-qr-code" class="slide__qr" aria-label="Attendance QR code"></div>
+
+        <div class="slide__code-block">
+          <p class="slide__code-label">Session code</p>
+          <p id="teaching-qr-code-display" class="slide__code"></p>
+        </div>
+
+        <p class="slide__fallback">
+          Can't scan? Go to <strong>teaching.palmyed.com</strong>
+        </p>
+
+        <p id="teaching-qr-help" class="slide__help" hidden></p>
+      </article>
+
+      <footer class="slide__footer">Palmy ED Teaching</footer>
+    </div>
+  </div>
+
+  <script src="../form-config.js"></script>
+  <script src="qrcode.min.js"></script>
+  <script src="qr-page.js"></script>
+</body>
+</html>
