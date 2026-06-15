@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teaching attendance · Palmy ED</title>
+  <title>Teaching · palmyed.com</title>
   <link rel="stylesheet" href="slide.css">
 </head>
 <body>
   <div class="slide">
-    <div class="slide__accent" aria-hidden="true"></div>
-
-    <div id="teaching-qr-error" class="slide__error" hidden>
-      <div class="slide__card slide__card--error">
+    <div id="teaching-qr-error" class="slide__panel slide__panel--error" hidden>
+      <div class="slide__card">
         <p class="slide__error-label">Cannot show QR code</p>
         <p id="teaching-qr-error-detail" class="slide__error-detail"></p>
       </div>
     </div>
 
-    <div id="teaching-qr-content" class="slide__content" hidden>
+    <div id="teaching-qr-content" class="slide__panel" hidden>
       <article class="slide__card">
+        <p class="slide__brand"><span class="slide__brand-domain">palmyed.com</span> teaching</p>
+
         <header class="slide__header">
           <h1 id="teaching-qr-title" class="slide__title"></h1>
           <p id="teaching-qr-meta" class="slide__meta">
@@ -28,9 +28,11 @@
 
         <div id="teaching-qr-code" class="slide__qr" aria-label="Attendance QR code"></div>
 
+        <div class="slide__divider" aria-hidden="true"></div>
+
         <div class="slide__code-block">
           <p class="slide__code-label">Session code</p>
-          <p id="teaching-qr-code-display" class="slide__code"></p>
+          <div id="teaching-qr-code-display" class="slide__code" role="group" aria-label="Session code"></div>
         </div>
 
         <p class="slide__fallback">
@@ -40,12 +42,20 @@
         <p id="teaching-qr-help" class="slide__help" hidden></p>
       </article>
 
-      <footer class="slide__footer">Palmy ED Teaching</footer>
+      <div id="teaching-qr-downloads" class="slide__downloads" hidden>
+        <span class="slide__downloads-label">Add to presentation</span>
+        <div class="slide__downloads-actions">
+          <button type="button" class="slide__download" data-format="portrait">Tall layout</button>
+          <span class="slide__downloads-sep" aria-hidden="true">·</span>
+          <button type="button" class="slide__download" data-format="landscape">Wide layout</button>
+        </div>
+      </div>
     </div>
   </div>
 
   <script src="../form-config.js"></script>
   <script src="qrcode.min.js"></script>
+  <script src="html-to-image.js"></script>
   <script src="qr-page.js"></script>
 </body>
 </html>

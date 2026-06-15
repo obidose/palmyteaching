@@ -2,6 +2,11 @@
   "use strict";
 
   var QR_SIZE = 400;
+  var GENERATING_LABEL = "Saving…";
+  var LABELS = {
+    portrait: "Tall layout",
+    landscape: "Wide layout"
+  };
 
   function getParams() {
     var params = new URLSearchParams(window.location.search);
@@ -43,6 +48,18 @@
     });
   }
 
+  function renderCode(container, code) {
+    container.innerHTML = "";
+    container.setAttribute("aria-label", "Session code " + code.split("").join(" "));
+
+    for (var i = 0; i < code.length; i++) {
+      var char = document.createElement("span");
+      char.className = "slide__code-char";
+      char.textContent = code.charAt(i);
+      container.appendChild(char);
+    }
+  }
+
   function updateMeta(params) {
     var dateWrap = document.getElementById("teaching-qr-date-wrap");
     var speakerWrap = document.getElementById("teaching-qr-speaker-wrap");
@@ -60,6 +77,138 @@
     if (hasDate) show(dateWrap);
     if (hasSpeaker) show(speakerWrap);
     if (hasDate && hasSpeaker) show(sep);
+  }
+
+  function sanitizeFilename(text) {
+    return String(text || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "")
+      .slice(0, 40);
+  }
+
+  function buildFilename(code, title, format) {
+    var parts = ["palmyed-teaching", code];
+    var slug = sanitizeFilename(title);
+
+    if (slug) {
+      parts.push(slug);
+    }
+
+    if (format === "landscape") {
+      parts.push("landscape");
+    }
+
+    return parts.join("-") + ".png";
+  }
+
+  function downloadDataUrl(dataUrl, filename) {
+    var link = document.createElement("a");
+    link.download = filename;
+    link.href = dataUrl;
+    link.click();
+  }
+
+  function shouldIncludeInCapture(node) {
+    if (!node || !node.classList) {
+      return true;
+    }
+
+    if (node.classList.contains("slide__download")) {
+      return false;
+    }
+
+    if (node.classList.contains("slide__downloads")) {
+      return false;
+    }
+
+    if (node.closest && node.closest(".slide__downloads")) {
+      return false;
+    }
+
+    return true;
+  }
+
+  function captureCard(card, format) {
+    var isLandscape = format === "landscape";
+
+    if (isLandscape) {
+      card.classList.add("slide__card--landscape");
+    }
+
+    return new Promise(function (resolve, reject) {
+      window.requestAnimationFrame(function () {
+        window.setTimeout(function () {
+          /* global htmlToImage */
+          htmlToImage
+            .toPng(card, {
+              pixelRatio: 2,
+              cacheBust: true,
+              filter: shouldIncludeInCapture
+            })
+            .then(resolve, reject);
+        }, isLandscape ? 150 : 100);
+      });
+    }).finally(function () {
+      card.classList.remove("slide__card--landscape");
+    });
+  }
+
+  function setDownloadsDisabled(disabled, activeButton) {
+    var buttons = document.querySelectorAll(".slide__download");
+
+    for (var i = 0; i < buttons.length; i++) {
+      var button = buttons[i];
+      button.disabled = disabled;
+
+      if (disabled && button === activeButton) {
+        button.textContent = GENERATING_LABEL;
+      } else if (!disabled) {
+        button.textContent = LABELS[button.getAttribute("data-format")] || button.textContent;
+      }
+    }
+  }
+
+  function setupDownload(code, params) {
+    var downloads = document.getElementById("teaching-qr-downloads");
+    var card = document.querySelector("#teaching-qr-content .slide__card");
+
+    if (!downloads || !card) {
+      return;
+    }
+
+    show(downloads);
+
+    downloads.addEventListener("click", function (event) {
+      var button = event.target.closest(".slide__download");
+
+      if (!button || button.disabled) {
+        return;
+      }
+
+      var format = button.getAttribute("data-format") || "portrait";
+
+      setDownloadsDisabled(true, button);
+
+      captureCard(card, format)
+        .then(function (dataUrl) {
+          downloadDataUrl(dataUrl, buildFilename(code, params.title, format));
+        })
+        .catch(function () {
+          window.alert("Could not generate image. Try again or take a screenshot.");
+        })
+        .finally(function () {
+          setDownloadsDisabled(false);
+        });
+    });
+  }
+
+  function enableDownloadAfterRender(code, params) {
+    window.requestAnimationFrame(function () {
+      window.setTimeout(function () {
+        setupDownload(code, params);
+      }, 50);
+    });
   }
 
   function init() {
@@ -97,7 +246,7 @@
     }
 
     updateMeta(params);
-    setText(document.getElementById("teaching-qr-code-display"), code);
+    renderCode(document.getElementById("teaching-qr-code-display"), code);
 
     hide(helpEl);
     if (params.helpText && params.helpText.trim()) {
@@ -109,6 +258,7 @@
 
     show(document.getElementById("teaching-qr-content"));
     hide(document.getElementById("teaching-qr-error"));
+    enableDownloadAfterRender(code, params);
   }
 
   if (document.readyState === "loading") {

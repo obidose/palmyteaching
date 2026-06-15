@@ -25,7 +25,7 @@
 
     if (!window.TeachingForm.isConfigured()) {
       showError(
-        "Attendance form is not configured yet. Contact the teaching coordinator."
+        "Sign-in form is not configured yet. Contact the teaching coordinator."
       );
       return true;
     }
@@ -46,7 +46,7 @@
 
     if (!window.TeachingForm.isConfigured()) {
       showError(
-        "Attendance form is not configured yet. Contact the teaching coordinator."
+        "Sign-in form is not configured yet. Contact the teaching coordinator."
       );
       return;
     }
@@ -76,7 +76,7 @@
 
     if (!window.TeachingForm.isConfigured()) {
       showError(
-        "Attendance form is not configured yet. Contact the teaching coordinator."
+        "Sign-in form is not configured yet. Contact the teaching coordinator."
       );
     }
   }

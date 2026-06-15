@@ -1,10 +1,10 @@
 # Palmy ED Teaching
 
-Static site for ED teaching attendance — no login, no build step.
+Static site for ED teaching sign-in and session feedback — no login, no build step.
 
 ## Live site
 
-- **Sign in (manual code):** [teaching.palmyed.com](https://teaching.palmyed.com)
+- **Sign in & feedback:** [teaching.palmyed.com](https://teaching.palmyed.com)
 - **QR slide (facilitators):** [teaching.palmyed.com/qr/](https://teaching.palmyed.com/qr/) — use with `?s=CODE&title=...&date=...&speaker=...`
 
 ## Local development

@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mark teaching attendance · Palmy ED</title>
+  <title>Sign in &amp; feedback · palmyed.com</title>
   <link rel="stylesheet" href="attend.css">
 </head>
 <body>
   <main class="attend">
     <header class="attend__header">
-      <div class="attend__brand-bar" aria-hidden="true"></div>
-      <p class="attend__site-label">Palmy ED Teaching</p>
-      <h1 class="attend__title">Mark attendance</h1>
+      <a class="attend__brand" href="https://palmyed.com" target="_blank" rel="noopener">
+        <div class="attend__brand-bar" aria-hidden="true"></div>
+        <span class="attend__brand-name">palmyed.com</span>
+      </a>
+      <h1 class="attend__title">Sign in &amp; feedback</h1>
     </header>
 
-    <p class="attend__intro">Enter the 4-character code shown in the teaching room.</p>
+    <p class="attend__intro">Enter the 4-character code from the teaching room to sign in and leave session feedback.</p>
 
     <form id="attend-form" class="attend__form" autocomplete="off">
       <label class="attend__label" for="attend-code">Session code</label>
@@ -30,12 +32,18 @@
         placeholder="e.g. K7M2"
         required
       />
-      <button type="submit" class="attend__submit">Continue to form</button>
+      <button type="submit" class="attend__submit">Sign in</button>
     </form>
 
     <div id="attend-error" class="attend__error-panel" hidden>
       <p id="attend-error-detail" class="attend__error"></p>
     </div>
+
+    <footer class="attend__footer">
+      <a class="attend__footer-link" href="https://palmyed.com" target="_blank" rel="noopener">
+        Clinician handbook &amp; resources
+      </a>
+    </footer>
   </main>
 
   <script src="form-config.js"></script>
