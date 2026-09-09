@@ -160,9 +160,44 @@ body {
   color: var(--text);
 }
 
+.attend__signup {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.attend__signup-btn {
+  display: block;
+  padding: 0.85rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  background: var(--palmy-teal);
+  border-radius: 0.5rem;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.attend__signup-btn:hover {
+  background: #00796b;
+}
+
+.attend__signup-btn:active {
+  transform: scale(0.98);
+}
+
+.attend__signup-btn:focus-visible {
+  outline: 2px solid var(--palmy-teal);
+  outline-offset: 3px;
+}
+
 .attend__footer {
   margin-top: auto;
   padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  align-items: center;
 }
 
 .attend__footer-link {
@@ -183,4 +218,15 @@ body {
   outline: 2px solid var(--palmy-teal);
   outline-offset: 2px;
   border-radius: 0.125rem;
+}
+
+.attend__footer-link--quiet {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #9e9e9e;
+}
+
+.attend__footer-link--quiet:hover {
+  color: var(--text-muted);
+  border-bottom-color: var(--text-muted);
 }
