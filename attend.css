@@ -226,12 +226,6 @@ body {
   color: var(--text-muted);
 }
 
-.attend__resource-note {
-  margin: 0.75rem 0 0;
-  font-size: 0.8125rem;
-  color: var(--text-muted);
-}
-
 @media (max-width: 360px) {
   .attend { padding-inline: 1rem; }
   .attend__card { padding: 1rem; }
