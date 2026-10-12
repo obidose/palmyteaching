@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign in &amp; feedback · palmyed.com</title>
+  <title>ED teaching · palmyed.com</title>
   <link rel="stylesheet" href="attend.css">
 </head>
 <body>
@@ -13,42 +13,53 @@
         <div class="attend__brand-bar" aria-hidden="true"></div>
         <span class="attend__brand-name">palmyed.com</span>
       </a>
-      <h1 class="attend__title">Sign in &amp; feedback</h1>
+      <h1 class="attend__title">ED teaching</h1>
+      <p class="attend__subtitle">Sign in, find upcoming sessions, or sign up to teach.</p>
     </header>
 
-    <p class="attend__intro">Enter the 4-character code from the teaching room to sign in and leave session feedback.</p>
+    <section class="attend__card" aria-labelledby="signin-title">
+      <h2 id="signin-title" class="attend__section-title">Sign in &amp; feedback</h2>
+      <p class="attend__intro">Enter the 4-character code from the teaching room to sign in and leave session feedback.</p>
 
-    <form id="attend-form" class="attend__form" autocomplete="off">
-      <label class="attend__label" for="attend-code">Session code</label>
-      <input
-        id="attend-code"
-        class="attend__input"
-        type="text"
-        inputmode="text"
-        autocapitalize="characters"
-        autocorrect="off"
-        spellcheck="false"
-        maxlength="4"
-        placeholder="e.g. K7M2"
-        required
-      />
-      <button type="submit" class="attend__submit">Sign in</button>
-    </form>
+      <form id="attend-form" class="attend__form" autocomplete="off">
+        <label class="attend__label" for="attend-code">Session code</label>
+        <input
+          id="attend-code"
+          class="attend__input"
+          type="text"
+          inputmode="text"
+          autocapitalize="characters"
+          autocorrect="off"
+          spellcheck="false"
+          maxlength="4"
+          placeholder="K7M2"
+          required
+        />
+        <button type="submit" class="attend__submit">Sign in</button>
+      </form>
 
-    <div id="attend-error" class="attend__error-panel" hidden>
-      <p id="attend-error-detail" class="attend__error"></p>
-    </div>
+      <div id="attend-error" class="attend__error-panel" role="alert" hidden>
+        <p id="attend-error-detail" class="attend__error"></p>
+      </div>
 
-    <div class="attend__signup">
+    </section>
+
+    <nav class="attend__resources" aria-label="Teaching resources">
+      <a class="attend__resource" href="https://midcentraldhb.sharepoint.com/:x:/t/AESS-Consultants-EDInitiative/IQBhhuxQlscsQYRrwYtYVAtgAc1jJUc1QA3aGvR3kk1MWbI?e=MyB3QR" target="_blank" rel="noopener">
+        <span class="attend__resource-title">Teaching calendar <span aria-hidden="true">↗</span></span>
+        <span class="attend__resource-description">View the teaching timetable</span>
+      </a>
       <a
-        class="attend__signup-btn"
+        class="attend__resource"
         href="https://midcentraldhb.sharepoint.com/teams/AESS-Consultants-EDInitiative/Lists/EM%20Teaching%20Signup/AllItems.aspx?env=WebViewList"
         target="_blank"
         rel="noopener"
       >
-        Sign up to teach
+        <span class="attend__resource-title">Sign up to teach <span aria-hidden="true">↗</span></span>
+        <span class="attend__resource-description">Put your name down for a session</span>
       </a>
-    </div>
+    </nav>
+    <p class="attend__resource-note">Calendar and signup open in SharePoint.</p>
 
     <footer class="attend__footer">
       <a class="attend__footer-link" href="https://palmyed.com" target="_blank" rel="noopener">

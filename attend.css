@@ -30,7 +30,7 @@ body {
 }
 
 .attend {
-  max-width: 22rem;
+  max-width: 30rem;
   min-height: 100dvh;
   margin: 0 auto;
   padding: 2rem 1.25rem 2.5rem;
@@ -80,14 +80,14 @@ body {
 
 .attend__title {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--text);
 }
 
 .attend__intro {
   margin: 0 0 1.5rem;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
 }
 
@@ -106,6 +106,8 @@ body {
 }
 
 .attend__input {
+  min-width: 0;
+  width: 100%;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 0.35em;
@@ -160,39 +162,83 @@ body {
   color: var(--text);
 }
 
-.attend__signup {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
+[hidden] { display: none !important; }
+
+.attend__subtitle {
+  margin: 0.5rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
 }
 
-.attend__signup-btn {
+.attend__card {
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(26, 26, 26, 0.04);
+}
+
+.attend__section-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.attend__resources {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.attend__resource {
   display: block;
-  padding: 0.85rem 1.25rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
+  padding: 1rem 1.25rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
   text-decoration: none;
-  background: var(--palmy-teal);
-  border-radius: 0.5rem;
-  transition: background 0.15s ease, transform 0.1s ease;
 }
 
-.attend__signup-btn:hover {
-  background: #00796b;
+.attend__resource:hover {
+  border-color: var(--palmy-teal);
+  background: #f3faf8;
 }
 
-.attend__signup-btn:active {
-  transform: scale(0.98);
-}
-
-.attend__signup-btn:focus-visible {
+.attend__resource:focus-visible,
+.attend__submit:focus-visible {
   outline: 2px solid var(--palmy-teal);
   outline-offset: 3px;
 }
 
+.attend__resource-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #00695c;
+  font-weight: 650;
+}
+
+.attend__resource-description {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.attend__resource-note {
+  margin: 0.75rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 360px) {
+  .attend { padding-inline: 1rem; }
+  .attend__card { padding: 1rem; }
+}
+
 .attend__footer {
-  margin-top: auto;
+  margin-top: 0;
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -221,9 +267,9 @@ body {
 }
 
 .attend__footer-link--quiet {
-  font-size: 0.7rem;
+  font-size: 0.8125rem;
   font-weight: 400;
-  color: #9e9e9e;
+  color: var(--text-muted);
 }
 
 .attend__footer-link--quiet:hover {
